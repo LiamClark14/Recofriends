@@ -1,0 +1,6 @@
+{
+  id: @recofriendation.id,
+  recofriendation: @recofriendation.recofriendation,
+  created_at: @recofriendation.created_at,
+  updated_at: @recofriendation.updated_at
+}

@@ -1,0 +1,7 @@
+@recofriendations.map do |recofriendation|
+  {
+    id: recofriendation.id,
+    recofriendation: recofriendation.recofriendation,
+    url: recofriendation_url(recofriendation, format: :json)
+  }
+end

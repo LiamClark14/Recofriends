@@ -1,0 +1,2 @@
+class Recofriendation < ApplicationRecord
+end

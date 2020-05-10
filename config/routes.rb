@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :recofriendations
   # EXAMPLE HTML ROUTE
   # get "/photos" => "photos#index"
 
