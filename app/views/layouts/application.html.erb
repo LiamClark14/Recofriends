@@ -9,6 +9,15 @@
   </head>
 
   <body>
+  <%= if flsh[:notice]%>
+  <div class="notification is-primary global-notification">
+  <p class="notice"><%= notice %></p>
+  </div>
+  <% end %>
+  <% if flash[:alert]%>
+  <div class="alert"><%= alert %></p>
+  </div>
+  <% end %>
     <%= yield %>
   </body>
 </html>
