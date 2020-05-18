@@ -4,7 +4,8 @@ class RecofriendationsController < ApplicationController
   # GET /recofriendations
   # GET /recofriendations.json
   def index
-    @recofriendations = Recofriendation.all
+    @recofriendations = Recofriendation.all.order("created_at DESC")
+    @recofriendation = Recofriendation.new
   end
 
   # GET /recofriendations/1
@@ -28,7 +29,7 @@ class RecofriendationsController < ApplicationController
 
     respond_to do |format|
       if @recofriendation.save
-        format.html { redirect_to @recofriendation, notice: 'Recofriendation was successfully created.' }
+        format.html { redirect_to @recofriendation, notice: "Recofriendation was successfully created." }
         format.json { render :show, status: :created, location: @recofriendation }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class RecofriendationsController < ApplicationController
   def update
     respond_to do |format|
       if @recofriendation.update(recofriendation_params)
-        format.html { redirect_to @recofriendation, notice: 'Recofriendation was successfully updated.' }
+        format.html { redirect_to @recofriendation, notice: "Recofriendation was successfully updated." }
         format.json { render :show, status: :ok, location: @recofriendation }
       else
         format.html { render :edit }
@@ -56,19 +57,20 @@ class RecofriendationsController < ApplicationController
   def destroy
     @recofriendation.destroy
     respond_to do |format|
-      format.html { redirect_to recofriendations_url, notice: 'Recofriendation was successfully destroyed.' }
+      format.html { redirect_to recofriendations_url, notice: "Recofriendation was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_recofriendation
-      @recofriendation = Recofriendation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def recofriendation_params
-      params.require(:recofriendation).permit(:recofriendation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_recofriendation
+    @recofriendation = Recofriendation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def recofriendation_params
+    params.require(:recofriendation).permit(:recofriendation)
+  end
 end

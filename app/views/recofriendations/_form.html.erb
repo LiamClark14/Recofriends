@@ -1,22 +1,9 @@
-<%= form_with(model: recofriendation, local: true) do |form| %>
-  <% if recofriendation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recofriendation.errors.count, "error") %> prohibited this recofriendation from being saved:</h2>
-
-      <ul>
-        <% recofriendation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :recofriendation %>
-    <%= form.text_field :recofriendation %>
+<%= simple_form_for(@recofriendation) do |f| %>
+<%= f.error_notification %>
+<div class="field">
+  <div class="control">
+    <%= f.input :recofriendation, label: "Make a recomendation to your friends", input_html: { class: "textarea "}, wrapper: false, label_html: {class: "label"}, placeholder: "Make a new recofriendation..." %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+<%= f.button :submit, class: "button is-success"%>    
 <% end %>

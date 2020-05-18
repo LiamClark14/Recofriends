@@ -1,27 +1,11 @@
-<p id="notice"><%= notice %></p>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <%= render 'trends'%>
+      <%= render 'feed' %>
+      <%= render 'who-to-follow' %>
+    </div>
+  </div>
+</section> 
 
-<h1>Recofriendations</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Recofriendation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @recofriendations.each do |recofriendation| %>
-      <tr>
-        <td><%= recofriendation.recofriendation %></td>
-        <td><%= link_to 'Show', recofriendation %></td>
-        <td><%= link_to 'Edit', edit_recofriendation_path(recofriendation) %></td>
-        <td><%= link_to 'Destroy', recofriendation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Recofriendation', new_recofriendation_path %>
