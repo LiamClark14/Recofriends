@@ -1,29 +1,32 @@
 <div class="column is-half">
+<% if user_signed_in? %>
   <article class="media box">
     <figure class="media-left">
       <p class ="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/64x64.png">
+        <%= gravatar_image_tag(current_user.email, size: 64, alt: current_user.name) %>
       </p>
     </figure>
     <div class="media-content"> 
        <%= render 'recofriendations/form'%>
     </div> 
   </article> 
+  <% end %>
 
 <% @recofriendations.each do | recofriendation |%>
   <div class="box">
     <article class="media">
       <div class="media-left">
         <figure class="image is-64x64">
-        <img src="https://bulma.io/images/placeholders/64x64.png">
+        <%= gravatar_image_tag(recofriendation.user.email, size: 64, alt: recofriendation.user.name) %>
         </figure>
         </div>
       <div class="media-content">
         <div class="content">
-          <strong>Liam Clark</strong><br />
-          <small>@liamclark</small><br />
+          <strong><%= recofriendation.user.name%></strong><br />
+          <small><%= recofriendation.user.username %></small><br />
           <p><%= recofriendation.recofriendation %></p>
-        </div>  
+        </div>
+        <% if user_signed_in? && current_user.id == recofriendation.user_id %> 
         <nav class="level">
           <div class="level-left is-mobile">
             <%=link_to recofriendation, class: "level-item" do %>
@@ -37,6 +40,7 @@
             <% end %>     
           </div>
         </nav>
+        <% end %>
       </div>
     </article>    
   </div>

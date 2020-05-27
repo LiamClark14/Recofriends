@@ -1,5 +1,6 @@
 class RecofriendationsController < ApplicationController
   before_action :set_recofriendation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /recofriendations
   # GET /recofriendations.json
@@ -15,7 +16,7 @@ class RecofriendationsController < ApplicationController
 
   # GET /recofriendations/new
   def new
-    @recofriendation = Recofriendation.new
+    @recofriendation = current_user.recofriendations.build
   end
 
   # GET /recofriendations/1/edit
@@ -25,11 +26,11 @@ class RecofriendationsController < ApplicationController
   # POST /recofriendations
   # POST /recofriendations.json
   def create
-    @recofriendation = Recofriendation.new(recofriendation_params)
+    @recofriendation = current_user.recofriendations.build(recofriendation_params)
 
     respond_to do |format|
       if @recofriendation.save
-        format.html { redirect_to @recofriendation, notice: "Recofriendation was successfully created." }
+        format.html { redirect_to root_path, notice: "Recofriendation was successfully created." }
         format.json { render :show, status: :created, location: @recofriendation }
       else
         format.html { render :new }

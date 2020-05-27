@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: "registrations" }
   resources :recofriendations
   # EXAMPLE HTML ROUTE
   # get "/photos" => "photos#index"

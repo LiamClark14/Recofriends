@@ -1,5 +1,21 @@
-<h1>New Recofriendation</h1>
+<div class="section">
+	<div class="container">
+		<div class="columns is-centered">
+			<div class="column is-half">
+				<h1 class="title">Create a new Recofriendation</h1>
+					<%= render 'form', recofriendation: @recofriendation %>
+			</div>
+		</div>
+	</div>
+</div>
 
-<%= render 'form', recofriendation: @recofriendation %>
-
-<%= link_to 'Back', recofriendations_path %>
+<nav class="navbar is-fixed-bottom">
+	<div class="navbar-menu">
+		<div class="navbar-item">
+			<div class="field is-grouped">
+				<p class="control">
+					<%= link_to 'Cancel', recofriendations_path, class: "button is-dark" %>
+				</p>
+		</div>
+	</div>
+</nav>
